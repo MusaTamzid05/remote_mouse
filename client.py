@@ -33,6 +33,9 @@ class Client:
                 print(e)
                 return None
 
+        else:
+            print(message)
+
 
 
 if __name__ == "__main__":
