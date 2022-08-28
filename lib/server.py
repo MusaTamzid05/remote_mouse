@@ -58,6 +58,13 @@ def on_move(x, y):
 
     server.queue.append(f"mouse_pos={x},{y}")
 
+def on_scroll(x, y, dx, dy):
+    if dy < 0:
+        server.queue.append(f"scroll_down")
+    else:
+        server.queue.append(f"scroll_up")
+
+
 def helper_click():
     global click_count
     time.sleep(0.2)
@@ -85,7 +92,7 @@ def on_click(x, y, button, pressed):
 
 
 if __name__ == "__main__":
-    listener = mouse.Listener(on_move = on_move, on_click = on_click)
+    listener = mouse.Listener(on_move = on_move, on_click = on_click, on_scroll = on_scroll)
     listener.start()
     server.run()
 
