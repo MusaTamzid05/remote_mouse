@@ -48,6 +48,15 @@ class Client:
             result["name"] = "left_single_right"
             return result
 
+        elif "scroll_down" in message:
+            result["name"] = "scroll_down"
+            return result
+
+        elif "scroll_up" in message:
+            result["name"] = "scroll_up"
+            return result
+
+
         print(f"Invalid input {message}")
 
 
