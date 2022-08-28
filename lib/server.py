@@ -1,5 +1,6 @@
 import socket
 from pynput import mouse
+from pynput.mouse import Button
 from threading import Thread
 import time
 
@@ -35,7 +36,6 @@ class Server:
                 message = self.queue[0]
                 self.queue = []
 
-                print(message)
                 conn.send(message.encode())
         except KeyboardInterrupt:
             print("[*] Closing server")
@@ -71,6 +71,10 @@ def helper_click():
 
 
 def on_click(x, y, button, pressed):
+    if button == Button.right:
+        server.queue.append("single_right")
+        return
+
     global click_count
     if pressed:
         click_count += 1
