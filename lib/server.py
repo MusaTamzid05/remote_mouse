@@ -18,7 +18,7 @@ class Server:
         self.server_socket.listen(1)
         conn, address = self.server_socket.accept()
 
-        print("connect to :" + address)
+        print(f"connect to : {address[0]}")
         conn.send("Connected".encode())
 
 
