@@ -25,6 +25,7 @@ class Client:
 
                 mouse_data = message.split("=")
                 mouse_data = mouse_data[1].split(",")
+                result["name"] = "mouse_pos"
                 result["x"] = int(mouse_data[0])
                 result["y"] = int(mouse_data[1])
 
@@ -33,8 +34,23 @@ class Client:
                 print(e)
                 return None
 
-        else:
-            print(message)
+        elif "single_left" in message:
+            result["name"] = "left_single_click"
+            return result
+
+
+        elif "double_left" in message:
+            result["name"] = "left_double_click"
+            return result
+
+
+        elif "single_right" in message:
+            result["name"] = "left_single_right"
+            return result
+
+        print(f"Invalid input {message}")
+
+
 
 
 
